@@ -1,0 +1,21 @@
+
+# select certain fields from database output csv file to an output csv file for mailchimp input
+inputfilename = "./testpy.txt"
+
+f = open(inputfilename, 'r')
+
+f.readline()
+i = 0
+
+for line in f:
+
+   #split
+   items = line.split("\t")
+   outStr = items[0]+","+items[1]+","+items[2]+"\n"
+   print outStr
+   outputfilename = "./output/"+items[1]+".csv"
+   with file(outputfilename,"a+b") as f: f.write(outStr)
+   print i
+   i += 1
+
+f.close()
